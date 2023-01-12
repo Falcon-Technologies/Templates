@@ -1,0 +1,117 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+
+}
+
+android {
+    /*  signingConfigs {
+          release {
+              storeFile file('key store file path')
+              storePassword 'keystore password'
+              keyAlias 'keystore name'
+              keyPassword 'keystore password'
+          }
+      }
+  */
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    namespace project.NAME_SPACE
+    compileSdk Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    defaultConfig {
+        applicationId project.PACKAGE_NAME
+        minSdk Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdk Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
+        rootProject.ext.variantRelease = false
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+
+            //admob
+            resValue 'string', 'ad_app_id', '"ca-app-pub-3940256099942544~3347511713"'
+            resValue 'string', 'admob_inter_main_screen', '"ca-app-pub-3940256099942544/1033173712"'
+            resValue 'string', 'admob_native_main_screen', '"ca-app-pub-3940256099942544/2247696110"'
+            resValue 'string', 'admob_banner_main_screen', '"ca-app-pub-3940256099942544/6300978111"'
+
+            //facebook
+            resValue 'string', 'fb_inter_main_screen', '"IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID"'
+            resValue 'string', 'fb_native_main_screen', '"IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID"'
+            resValue 'string', 'fb_banner_main_screen', '"IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID"'
+
+            //app lovin
+            resValue 'string', 'app_lovin_sdk_id', '"8RfG0KvFTupeWQtcKkUeRb1-QIa1TzM29aBv7_bbM_CST5mhU1CNw32erEA1kROPxNI_OTH2vPX7lSubSxXnq7"'
+            resValue 'string', 'lovin_inter_main_screen', '"ad lovin id\'s here"'
+            resValue 'string', 'lovin_native_main_screen', '"ad lovin id\'s here"'
+            resValue 'string', 'lovin_banner_main_screen', '"ad lovin id\'s here"'
+
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            // signingConfig signingConfigs.release
+
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation(files('libs/AudienceNetwork.aar'))
+    implementation(files('libs/DebugSettings.aar'))
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha01'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // android size unit
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    //Ad-mob integration
+    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+
+    //app-lovin integration
+    implementation 'com.applovin:applovin-sdk:11.3.3'
+
+
+    //firebase
+    implementation platform("com.google.firebase:firebase-bom:31.1.1")
+    implementation "com.google.firebase:firebase-crashlytics-ktx:18.3.2"
+    implementation "com.google.firebase:firebase-analytics-ktx:21.2.0"
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.1'
+    implementation 'com.google.firebase:firebase-config-ktx:21.2.0'
+
+    //androidx Preferences
+    implementation "androidx.preference:preference-ktx:1.2.0"
+
+}

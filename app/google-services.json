@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264801371446",
+    "project_id": "adstesting825",
+    "storage_bucket": "adstesting825.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264801371446:android:e4e189b1fa9ac1e5c4df97",
+        "android_client_info": {
+          "package_name": "com.falcon.technologies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264801371446-8r4m7llcvc4ofe8gscibo3dhjri7pclr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgQMmWS1Vf4HXmfKbKhbG8vMsJMOLzc0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264801371446-8r4m7llcvc4ofe8gscibo3dhjri7pclr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
